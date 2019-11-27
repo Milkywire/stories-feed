@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { Dimensions, StyleSheet, Image, Animated } from "react-native";
 import { State, PanGestureHandler } from "react-native-gesture-handler";
 
@@ -19,7 +19,7 @@ export default function StoriesFeed({ cards }) {
     }
   };
 
-  const getBucketAnimation = index => {
+  const getCardAnimation = index => {
     if (isCenterCard(index, activeIndex))
       return centerAnimationStyle(gestureValue);
     if (isRightCard(index, activeIndex))
@@ -37,7 +37,7 @@ export default function StoriesFeed({ cards }) {
         {cards.map((card, index) => (
           <Animated.View
             key={card.id}
-            style={[StyleSheet.absoluteFill, getBucketAnimation(index)]}
+            style={[StyleSheet.absoluteFill, getCardAnimation(index)]}
           >
             <Card card={card} />
           </Animated.View>
